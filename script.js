@@ -603,4 +603,47 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         revealOnScroll();
     }, 100);
+    
+    // Testimonials carousel initialization
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    if (testimonialCards && testimonialCards.length) {
+        let tIndex = 0;
+        const showTestimonial = (i) => {
+            testimonialCards.forEach((card, idx) => {
+                card.classList.toggle('active', idx === i);
+            });
+            tIndex = i;
+        };
+
+        const nextTestimonial = () => showTestimonial((tIndex + 1) % testimonialCards.length);
+        const prevTestimonial = () => showTestimonial((tIndex - 1 + testimonialCards.length) % testimonialCards.length);
+
+        let testimonialTimer = setInterval(nextTestimonial, 6000);
+
+        const nextBtn = document.querySelector('.testimonial-next');
+        const prevBtn = document.querySelector('.testimonial-prev');
+
+        if (nextBtn) nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            clearInterval(testimonialTimer);
+            nextTestimonial();
+            testimonialTimer = setInterval(nextTestimonial, 6000);
+        });
+
+        if (prevBtn) prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            clearInterval(testimonialTimer);
+            prevTestimonial();
+            testimonialTimer = setInterval(nextTestimonial, 6000);
+        });
+
+        // Pause rotation on hover/focus
+        const wrapper = document.querySelector('.testimonials-wrapper');
+        if (wrapper) {
+            wrapper.addEventListener('mouseenter', () => clearInterval(testimonialTimer));
+            wrapper.addEventListener('mouseleave', () => testimonialTimer = setInterval(nextTestimonial, 6000));
+            wrapper.addEventListener('focusin', () => clearInterval(testimonialTimer));
+            wrapper.addEventListener('focusout', () => testimonialTimer = setInterval(nextTestimonial, 6000));
+        }
+    }
 });
