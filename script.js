@@ -482,7 +482,8 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
     copyBtn.style.cssText = `
         margin-left: 0.5rem;
         padding: 0.25rem 0.5rem;
-        background: var(--bg-secondary);
+        background: var(--orange-500);
+        color:white;
         border: none;
         border-radius: 0.25rem;
         cursor: pointer;
