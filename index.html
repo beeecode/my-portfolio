@@ -2,792 +2,276 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Abdulhameed Sherif - Frontend Developer & Graphic Designer. Building beautiful, responsive web experiences and stunning visual designs.">
-    <meta name="keywords" content="Frontend Developer, Graphic Designer, Web Developer, UI/UX, Portfolio">
-    <meta name="author" content="Abdulhameed Sherif">
-    <title>Abdulhameed Sherif | Frontend Developer & Graphic Designer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeeeCode</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/styles.css">
+
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="#home"><code>Abdulhameed Sherif</code><span class="dot">.</span></a>
-            </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+  <!-- first wrapper -->
+  <section id="home">
+    <!-- NAV -->
+    <nav>
+      <div class="socials">
+        <a href="#" aria-label="GitHub">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.14 3 .4c2.28-1.55 3.29-1.23 3.29-1.23.65 1.65.24 2.87.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        </a>
+      </div>
 
-        </div>
+      <div class="logo">Abdulhameed<em>.</em> Sherif</div>
+
+      <ul class="nav-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#project">PROJECTS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-background">
-            <div class="hero-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <p class="hero-greeting fade-in">Hello, I'm</p>
-                    <h1 class="hero-name fade-in-up">Abdulhameed Sherif</h1>
-                    <h2 class="hero-title fade-in-up">Frontend Developer & Graphic Designer</h2>
-                    <p class="hero-description fade-in-up">
-                        I build high-performance, visually striking web experiences that convert. From concept to execution, I transform ideas into digital products that inspire, engage, and deliver impact.
-                    </p>
-                    <div class="hero-cta fade-in-up">
-                        <a href="#projects" class="btn btn-primary">
-                            <span>View Projects</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <span>Hire Me</span>
-                            <i class="fas fa-briefcase"></i>
-                        </a>
-                    </div>
-                    <div class="hero-social fade-in-up">
-                        <a href="https://github.com/beeecode" target="_blank" rel="noopener" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="www.linkedin.com/in/abdulhameed-sherif-954006394" target="_blank" rel="noopener"
-                            aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://wa.me/2348117590364" target="_blank" rel="noopener" aria-label="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <!-- HERO -->
+    <section class="hero">
+      <div class="ghost">dev</div>
+      <div class="hero-body">
+        <h1>Hello World!</h1>
+        <p class="subtitle">
+          Welcome To My <span class="o">Portfolio!</span> I'm Sherif A <span class="o">Frontend</span> Developer.
+        </p>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">My Work</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-description">A showcase of my best frontend development and graphic design work</p>
-            </div>
-
-            <!-- Project Filter -->
-            <div class="project-filter">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="frontend">Frontend</button>
-                <button class="filter-btn" data-filter="design">Design</button>
-            </div>
-
-            <!-- Frontend Projects -->
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/Age-calculator.PNG" alt="Age-calculator">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Html</span>
-                            <span class="tag">Css</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <h3 class="project-title">Age Calculator Web App</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Users needed a simple way to accurately calculate age based on
-                            date of birth without manual calculations.<br>
-                            <strong>Solution:</strong> Built a responsive web app that takes user input for date of
-                            birth and calculates age in years, months, and days.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> Html, Css, JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/base-parel-front-page.PNG" alt="Base-parel-front-page">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Html</span>
-                            <span class="tag">Css</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <h3 class="project-title">Beauty E-Commerce Frontend</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong>Beauty brands require visually appealing storefronts that showcase
-                            products clearly and encourage conversions.<br>
-                            <strong>Solution:</strong> Developed a modern, responsive e-commerce frontend for a beauty
-                            brand featuring product galleries, filtering options, and a seamless checkout experience.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i>HTML5, CSS3, JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/clipborad-front-page.PNG" alt="clipborad-front-page">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Html</span>
-                            <span class="tag">Css</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <h3 class="project-title">Clipboard Landing Page Clone</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Practicing pixel-perfect layout implementation and responsive
-                            design is essential for frontend skill development.<br>
-                            <strong>Solution:</strong> Recreated the Clipboard landing page as a frontend practice
-                            project, focusing on layout accuracy, responsive breakpoints,
-                            and clean semantic HTML structure.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> HTML5, CSS3, JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/coffe-shop-fron-page.PNG" alt="Coffe-shop-fron-page">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Html</span>
-                            <span class="tag">Css</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <h3 class="project-title">Coffee Shop Landing Page</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Small coffee businesses need an engaging online presence to
-                            attract customers and highlight their brand.<br>
-                            <strong>Solution:</strong> Designed and built a coffee shop landing page with strong visual
-                            hierarchy, promotional sections,
-                            and responsive layout optimized for mobile and desktop users.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> HTML5, CSS3, JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/deatils-from front page.PNG" alt="Deatils-from front page">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Html</span>
-                            <span class="tag">Css</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <h3 class="project-title">Card Details Form UI</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Payment forms often suffer from poor UX, leading to user errors
-                            and abandoned checkouts.<br>
-                            <strong>Solution:</strong> Created a card details form UI with real-time input formatting,
-                            visual card preview,
-                            and validation feedback to improve user confidence and data accuracy.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> HTML5, CSS3, JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Projects 6-->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/e-commerce-cart-page.PNG" alt="E-commerce-cart-page">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">JAVASCRIPT</span>
-                        </div>
-                        <h3 class="project-title">E-Commerce Cart UI</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Users need a clear and intuitive cart interface to review items
-                            before checkout.<br>
-                            <strong>Solution:</strong> Built an interactive e-commerce cart UI allowing users to add,
-                            remove,
-                            and update product quantities with instant price calculations.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> HTML5, CSS3, JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Projects 7 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/ewe-bot front-page.PNG" alt="Ewe-bot front-page">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">JAVASCRIPT</span>
-                        </div>
-                        <h3 class="project-title">Ewe Bot Landing Page Clone</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Landing pages require strong visual hierarchy and clear
-                            call-to-action sections to effectively communicate product value.<br>
-                            <strong>Solution:</strong> Recreated the Ewe Bot landing page as a frontend practice
-                            project, focusing on layout accuracy,
-                            responsive design, and component spacing to match the original design closely.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> HTML5, CSS3, JavaScript, JAVASCRIPT</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- project 8 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/port-folio front-age.PNG" alt="Port-folio front-age">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">JAVASCRIPT</span>
-                        </div>
-                        <h3 class="project-title">Personal Portfolio Landing Page</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Developers need a clean and professional portfolio front page to
-                            showcase skills and projects effectively.<br>
-                            <strong>Solution:</strong> Designed and built a responsive portfolio landing page featuring
-                            a hero section,
-                            project highlights, and structured content optimized for readability and recruiter scanning.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> HTML5, CSS3, JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- project 9 -->
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">
-                        <img src="web-pages/social-media-dashboard.PNG" alt="social-media-dashboard">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="#" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">JAVASCRIPT</span>
-                        </div>
-                        <h3 class="project-title">Social Media Analytics Dashboard (Frontend Mentor)</h3>
-                        <p class="project-description">
-                            <strong>Problem:</strong> Users need a centralized view to monitor engagement metrics across
-                            multiple social media platforms.<br>
-                            <strong>Solution:</strong> Implemented a responsive social media analytics dashboard based
-                            on a Frontend Mentor challenge,
-                            including theme switching, metric cards, and structured data visualization.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-code"></i> HTML5, CSS3, JavaScript, </span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Design Project 1 -->
-                <div class="project-card" data-category="design">
-                    <div class="project-image">
-                        <img src="graphics-folder/Social Media cyber cafe flyer.png"
-                            alt="Social Media cyber cafe flyer">
-                        <div class="project-overlay">
-                            <!-- <button class="project-link preview-btn" data-design="design1">
-                                <i class="fas fa-search-plus"></i> View Details
-                            </button> -->
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Logo Design</span>
-                            <span class="tag">Branding</span>
-                        </div>
-                        <h3 class="project-title">Social Media Cyber Cafe Flyer</h3>
-                        <p class="project-description">
-                            Complete brand identity package including logo, color palette, typography,
-                            and brand guidelines for a fintech startup. The modern, trustworthy design
-                            helped secure $2M in seed funding.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-palette"></i> Photoshop</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Design Project 2 -->
-                <div class="project-card" data-category="design">
-                    <div class="project-image">
-                        <img src="graphics-folder/social-media-flyer.png" alt="Social Media flyer">
-                        <div class="project-overlay">
-                            <!-- <button class="project-link preview-btn" data-design="design2">
-                                <i class="fas fa-search-plus"></i> View Details
-                            </button> -->
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Social Media flyer</span>
-                            <span class="tag">Templates</span>
-                        </div>
-                        <h3 class="project-title">Social Media Flyer</h3>
-                        <p class="project-description">
-                            Created a comprehensive set of Instagram, Facebook, and Twitter templates
-                            for a fashion brand. Cohesive design system increased engagement by 85%
-                            and follower growth by 120%.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-palette"></i> Canva, Photoshop</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Design Project 3 -->
-                <div class="project-card" data-category="design">
-                    <div class="project-image">
-                        <img src="graphics-folder/social-media-vtu-flyer.png" alt="social-media-vtu-flyer">
-                        <div class="project-overlay">
-                            <!-- <button class="project-link preview-btn" data-design="design3">
-                                <i class="fas fa-search-plus"></i> View Details
-                            </button> -->
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Flyer</span>
-                            <span class="tag">Social Media</span>
-                        </div>
-                        <h3 class="project-title">Social Media VTU Flyer</h3>
-                        <p class="project-description">
-                            Designed user-friendly interface for a fitness tracking mobile app with
-                            focus on accessibility and motivation. Clean, energetic design achieved
-                            4.8/5 user satisfaction rating.
-                        </p>
-                        <div class="project-tech">
-                            <span><i class="fas fa-palette"></i> Photoshop</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">What I Do</span>
-                <h2 class="section-title">Skills & Expertise</h2>
-                <p class="section-description">Technologies and tools I use to bring ideas to life</p>
-            </div>
-
-            <div class="skills-content">
-                <div class="skills-box">
-                    <img src="./img/icons/html5-seeklogo.png" alt="HTML5" loading="lazy">
-                    <h1>HTML5</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/css3-seeklogo.png" alt="CSS3" loading="lazy">
-                    <h1>CSS3</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/javascript-js-seeklogo.png" alt="JavaScript" loading="lazy">
-                    <h1>JavaScript</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/react-seeklogo.png" alt="React" loading="lazy">
-                    <h1>React</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/bootstrap-seeklogo.png" alt="Bootstrap" loading="lazy">
-                    <h1>Bootstrap</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/vue-js-seeklogo.png" alt="Vue.js" loading="lazy">
-                    <h1>Vue.js</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/figma-seeklogo.png" alt="Figma" loading="lazy">
-                    <h1>Figma</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/adobe-photoshop-seeklogo.png" alt="Photoshop" loading="lazy">
-                    <h1>Photoshop</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/git-seeklogo.png" alt="Git" loading="lazy">
-                    <h1>Git</h1>
-                </div>
-                <div class="skills-box">
-                    <img src="./img/icons/tailwind-css-seeklogo.png" alt="Tailwind CSS" loading="lazy">
-                    <h1>Tailwind CSS</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="about-image-wrapper">
-                        <img src="profile-photo.jpg" alt="Abdulhameed Sherif - Frontend Developer & Graphic Designer">
-                        <!-- <div class="about-stats">
-                            <div class="stat">
-                                <h4>20+</h4>
-                                <p>Projects Completed</p>
-                            </div>
-                            <div class="stat">
-                                <h4>10+</h4>
-                                <p>Happy Clients</p>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="about-text">
-                    <span class="section-label">About Me</span>
-                    <h2 class="section-title">Turning Vision Into Reality</h2>
-                    <p class="about-description">
-                        I'm a passionate Frontend Developer and Graphic Designer with a proven track record
-                        of delivering high-quality digital solutions. With expertise in modern web technologies
-                        and design principles, I create user-centric experiences that drive engagement and results.
-                    </p>
-                    <p class="about-description">
-                        My approach combines technical excellence with creative problem-solving. Whether building
-                        responsive web applications or crafting compelling visual identities, I focus on delivering
-                        value through clean code, attention to detail, and a deep understanding of user needs.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Result-Driven</h4>
-                                <p>Focus on measurable outcomes and business impact</p>
-                            </div>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Disciplined Workflow</h4>
-                                <p>Organized approach to meet deadlines consistently</p>
-                            </div>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Continuous Learning</h4>
-                                <p>Always updating skills with latest technologies</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="about-cta">
-                        <a href="#contact" class="btn btn-primary">
-                            <span>Get In Touch</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="full-stack-Abdulhameed.pdf" download class="btn btn-outline">
-                            <i class="fas fa-download"></i>
-                            <span>Download CV</span>
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">What Clients Say</span>
-                <h2 class="section-title">Testimonials</h2>
-                <p class="section-description">Selected client feedback highlighting collaboration and results.</p>
-            </div>
-
-            <div class="testimonials-wrapper" aria-live="polite">
-                <article class="testimonial-card active" tabindex="0">
-                    <div class="testimonial-meta">
-                        <img src="profile-photo.jpg" alt="Jane Doe" class="testimonial-avatar">
-                        <div class="testimonial-person">
-                            <h4 class="testimonial-name">Yusuf Kehinde</h4>
-                            <p class="testimonial-role">CEO at BrightStart</p>
-                        </div>
-                    </div>
-                    <blockquote>
-                        <p>“Working with Abdulhameed was a game-changer for our product launch. His design and frontend
-                            work helped increase conversions and delivered on time.”</p>
-                    </blockquote>
-                </article>
-
-                <article class="testimonial-card" tabindex="0">
-                    <div class="testimonial-meta">
-                        <img src="profile-photo.jpg" alt="Ethan Reynolds" class="testimonial-avatar">
-                        <div class="testimonial-person">
-                            <h4 class="testimonial-name">Abdullahi Abdulkadir</h4>
-                            <p class="testimonial-role">Product Manager at FlowLabs</p>
-                        </div>
-                    </div>
-                    <blockquote>
-                        <p>“Abdulhameed brought clarity to our UX and implemented a polished, responsive site.
-                            Communication was excellent throughout.”</p>
-                    </blockquote>
-                </article>
-
-                <article class="testimonial-card" tabindex="0">
-                    <div class="testimonial-meta">
-                        <img src="profile-photo.jpg" alt="Lina Morales" class="testimonial-avatar">
-                        <div class="testimonial-person">
-                            <h4 class="testimonial-name">Taiwo Olayinka</h4>
-                            <p class="testimonial-role">Owner at The Green Table</p>
-                        </div>
-                    </div>
-                    <blockquote>
-                        <p>“Fast, professional, and creative. The final site reflected exactly what we wanted and
-                            boosted our online bookings significantly.”</p>
-                    </blockquote>
-                </article>
-            </div>
-
-            <div class="testimonial-controls" aria-hidden="false">
-                <button class="testimonial-prev" aria-label="Previous testimonial">&larr;</button>
-                <button class="testimonial-next" aria-label="Next testimonial">&rarr;</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Get In Touch</span>
-                <h2 class="section-title">Let's Work Together</h2>
-                <p class="section-description">Have a project in mind? Let's discuss how I can help bring your ideas to
-                    life</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <a href="mailto:abdulhameedsherif@gmail.com">abdulhameedsherif@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/beeecode" target="_blank" rel="noopener">github.com/beeecode</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <a href="www.linkedin.com/in/abdulhameed-sherif-954006394" target="_blank"
-                                rel="noopener">linkedin.com/in/abdulhameedsherif</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>WhatsApp</h4>
-                            <a href="https://wa.me/2348117590364" target="_blank" rel="noopener">+234 811 759 0364</a>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2026 Abdulhameed Sherif. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="https://github.com/beeecode" target="_blank" rel="noopener" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/abdulhameedsherif" target="_blank" rel="noopener"
-                        aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://wa.me/2348012345678" target="_blank" rel="noopener" aria-label="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Design Preview Modal -->
-    <div class="modal" id="designModal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-body" id="modalBody">
-                <!-- Content will be dynamically inserted -->
-            </div>
-        </div>
+    <!-- WHITE BAND -->
+    <div class="band-white">
+      <div class="bw-track bwTrack"></div>
+      <div class="bw-track bwTrack"></div>
     </div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    <!-- DARK BAND -->
+    <div class="band-dark">
+      <div class="bd-track bdTrack"></div>
+      <div class="bd-track bdTrack"></div>
+    </div>
+  </section>
+
+  <!-- abouut section -->
+
+  <section id="about">
+    <div class="about-container">
+      <div class="avatar">
+          <img src="./img/Beecode-Dp.jpg" alt="Avatar" loading="lazy">
+      </div>
+      <div class="about-content">
+        <div class="header-text">
+          <h1>About Me</h1>
+               </div>
+          <p class="paragraph">
+          <span>Who Am I?</span><br>
+          I'm a Frontend Developer with 3 years of turning ideas into pixel-perfect, living, breathing interfaces. I
+          don't just write code — I craft experiences that feel as good as they look. <br>
+          <span>What I Do</span><br>
+          My world lives at the intersection of design and logic. I build fast, accessible, and beautifully animated web
+          applications using React and Next.js, give them structure and confidence with TypeScript, and dress them sharp
+          with Tailwind CSS. Every component I write has a purpose. Every pixel has a reason. <br>
+          <span>How I Think</span><br>
+          I believe the best frontend work is invisible — when a user flows through an interface without friction,
+          without confusion, just pure intention meeting great execution, that's when I know the job is done right. I
+          obsess over details others overlook: micro-interactions, loading states, responsive edge cases, and the subtle
+          things that make a user smile without knowing why. <br>
+          <span>Beyond the Screen</span> <br>
+          When I'm not deep in a codebase, I'm studying great design, exploring new web technologies, and constantly
+          asking <i>"how can this be better?"</i> &nbsp; That curiosity is what keeps me growing.
+          </p>
+   
+      </div>
+    </div>
+    <div class="ghost">Frontend Dev</div>
+
+    <div class="band-white">
+      <div class="bw-track bwTrack"></div>
+      <div class="bw-track bwTrack"></div>
+    </div>
+
+    <!-- DARK BAND -->
+    <div class="band-dark">
+      <div class="bd-track bdTrack"></div>
+      <div class="bd-track bdTrack"></div>
+    </div>
+  </section>
+
+  <!-- project section -->
+   <section id="project">
+     <div class="ghost">projects</div>
+     <div class="header-text">
+       <h1>PROJECT</h1>
+     </div>
+    <div class="project-container">
+       <div class="slider-wrap">
+       <div class="slider-viewport">
+         <div class="slider-track" id="track">
+           <div class="slide">
+             <div class="project-card">
+               <div class="card-img">
+                 <img src="./img/Screenshot (578).png" alt="DinDin.">
+               </div>
+               <div class="card-info">
+                 <h3 class="card-title">DinDin.</h3>
+                 <a href="#" class="more-link"><span class="bullet"></span> LIVE</a>
+               </div>
+               <div class="card-overlay">
+                 <p class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis aliquid, dolor ad, nisi labore quidem.</p>
+                 <a href="#" class="github-link">LIVE</a>
+               </div>
+             </div>
+           </div>
+ 
+           <div class="slide">
+             <div class="project-card">
+               <div class="card-img">
+                 <img src="./img/projects/Screenshot (578).png" alt="CubosPay.">
+               </div>
+               <div class="card-info">
+                 <h3 class="card-title">CubosPay.</h3>
+                 <a href="#" class="more-link"><span class="bullet"></span> LIVE</a>
+               </div>
+               <div class="card-overlay">
+                 <p class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis aliquid, dolor ad, nisi labore quidem.</p>
+                 <a href="#" class="github-link">LIVE</a>
+               </div>
+             </div>
+           </div>
+ 
+           <div class="slide">
+             <div class="project-card">
+               <div class="card-img">
+                 <img src="./img/projects/Screenshot (578).png" alt="Portfólio.">
+               </div>
+               <div class="card-info">
+                 <h3 class="card-title">Portfólio.</h3>
+                 <a href="#" class="more-link"><span class="bullet"></span> LIVE</a>
+               </div>
+               <div class="card-overlay">
+                 <p class="description">Bringing the history of your brand to the forefront gives an emotional dimension to your visual identity.</p>
+                 <a href="#" class="github-link">LIVE</a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+ 
+       <div class="controls">
+         <button class="btn-nav" id="prevBtn"><img src="./img/icons/icons8-double-left-48.png" alt="Previous"></button>
+         <div class="dots" id="dots"></div>
+         <button class="btn-nav" id="nextBtn"><img src="./img/icons/icons8-double-right-48.png" alt="Next"></button>
+       </div>
+     </div>
+    </div>
+
+      <div class="band-white">
+      <div class="bw-track bwTrack"></div>
+      <div class="bw-track bwTrack"></div>
+    </div>
+
+    <!-- DARK BAND -->
+    <div class="band-dark">
+      <div class="bd-track bdTrack"></div>
+      <div class="bd-track bdTrack"></div>
+    </div>
+   </section>
+
+   <!-- contact section -->
+
+   <section id="contact">
+    <div class="header-text">
+       <h1>CONTACT</h1>
+     </div>
+    <div class="contact-container">
+      <div class="form-wrapper">
+
+    <div class="corner corner-top"></div>
+    <div class="corner corner-bottom"></div>
+
+    <form class="contact-form">
+
+        <div class="form-grid">
+
+            <div class="input-group">
+                <label>FIRST NAME :</label>
+                <input type="text">
+            </div>
+
+            <div class="input-group">
+                <label>LAST NAME :</label>
+                <input type="text">
+            </div>
+
+            <div class="input-group">
+                <label>EMAIL ID :</label>
+                <input type="email">
+            </div>
+
+            <div class="input-group">
+                <label>MESSAGE :</label>
+                <textarea rows="3"></textarea>
+            </div>
+
+        </div>
+
+       <div class="btn-container">
+         <button class="submit-btn">SUBMIT</button>
+
+        <div class="socials">
+               <div class="socials">
+        <a href="#" aria-label="GitHub">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.14 3 .4c2.28-1.55 3.29-1.23 3.29-1.23.65 1.65.24 2.87.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        </a>
+      </div>
+        </div>
+       </div>
+
+    </form>
+
+</div>
+    </div>
+        <!-- WHITE BAND -->
+    <div class="band-white">
+      <div class="bw-track bwTrack"></div>
+      <div class="bw-track bwTrack"></div>
+    </div>
+
+    <!-- DARK BAND -->
+    <div class="band-dark">
+      <div class="bd-track bdTrack"></div>
+      <div class="bd-track bdTrack"></div>
+    </div>
+
+   </section>
+  <script src="./script.js"></script>
 </body>
 
 </html>
