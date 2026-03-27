@@ -8,6 +8,7 @@ import validator from 'validator';
 dotenv.config({ path: '.env.local' });
 
 const app = express();
+app.set('trust proxy', 1); // Trust Render's reverse proxy for rate-limiting
 app.use(express.json());
 
 // ─── CORS ────────────────────────────────────────────────────────────────
