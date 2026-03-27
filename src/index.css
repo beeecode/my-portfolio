@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-ink: #000000;
+  --color-paper: #FFFFFF;
+  --color-muted: #8E9299;
+  --color-accent: #F27D26;
+  --color-surface: #0A0A0A;
+  --color-surface-light: #111111;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-paper font-sans antialiased;
+  }
+  ::selection {
+    background: rgba(242, 125, 38, 0.3);
+  }
+}
+
+@utility technical-border {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility glow-accent {
+  box-shadow: 0 0 20px rgba(242, 125, 38, 0.2);
+}
+
+@utility status-tag {
+  @apply px-3 py-1 text-[10px] font-mono uppercase tracking-widest rounded-full flex items-center gap-2;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-tag::before {
+  content: "";
+  @apply w-1 h-1 rounded-full bg-paper opacity-50;
+}
+
+@utility line-indicator {
+  @apply h-[1px] bg-white/20 flex-1;
+}
+
+@utility corner-bracket {
+  @apply absolute w-2 h-2 border-white/40;
+}
+
+@utility corner-tl { @apply top-0 left-0 border-t border-l; }
+@utility corner-tr { @apply top-0 right-0 border-t border-r; }
+@utility corner-bl { @apply bottom-0 left-0 border-b border-l; }
+@utility corner-br { @apply bottom-0 right-0 border-b border-r; }
+
+@utility section-padding {
+  @apply px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 py-20 md:py-28;
+}
+
+@utility section-heading {
+  @apply font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4;
+}
+
+@utility dot-grid-bg {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ═══ CONTACT FORM CINEMATIC ANIMATION ═══════════════════════════════════ */
+
+/* 3D Card Flip Container */
+.form-flip-container {
+  perspective: 1200px;
+}
+
+.form-flip-inner {
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.form-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.form-front,
+.form-back {
+  backface-visibility: hidden;
+}
+
+.form-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  background: #0A0A0A;
+  overflow: hidden;
+}
+
+/* Glitch dissolve on form fields */
+@keyframes glitchDissolve {
+  0% { opacity: 1; transform: translate(0, 0); filter: blur(0); }
+  20% { opacity: 0.8; transform: translate(-3px, 1px); filter: blur(0); }
+  40% { opacity: 0.6; transform: translate(4px, -2px); filter: blur(1px); }
+  60% { opacity: 0.3; transform: translate(-2px, 3px); filter: blur(2px); }
+  80% { opacity: 0.1; transform: translate(3px, -1px); filter: blur(4px); }
+  100% { opacity: 0; transform: translate(0, 0); filter: blur(8px); }
+}
+
+.glitch-dissolve {
+  animation: glitchDissolve 0.4s ease-out forwards;
+}
+
+/* Radar / Sonar Pulse */
+@keyframes radarPulse {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+.radar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid #F27D26;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+.radar-ring.active:nth-child(1) { animation: radarPulse 1.5s ease-out 0s forwards; }
+.radar-ring.active:nth-child(2) { animation: radarPulse 1.5s ease-out 0.3s forwards; }
+.radar-ring.active:nth-child(3) { animation: radarPulse 1.5s ease-out 0.6s forwards; }
+.radar-ring.active:nth-child(4) { animation: radarPulse 1.5s ease-out 0.9s forwards; }
+
+/* Radar center dot */
+.radar-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #F27D26;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px #F27D26, 0 0 24px rgba(242, 125, 38, 0.4);
+}
+
+@keyframes centerPulseGlow {
+  0%, 100% { box-shadow: 0 0 12px #F27D26, 0 0 24px rgba(242, 125, 38, 0.4); }
+  50% { box-shadow: 0 0 20px #F27D26, 0 0 40px rgba(242, 125, 38, 0.6); }
+}
+
+.radar-center.active {
+  animation: centerPulseGlow 0.8s ease-in-out infinite;
+}
+
+/* Paper Plane */
+@keyframes planeFly {
+  0% { offset-distance: 0%; opacity: 1; }
+  85% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+.paper-plane {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  color: #F27D26;
+  offset-path: path('M 0 280 C 80 200, 200 100, 350 50 S 500 -30, 600 -80');
+  offset-rotate: auto;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.paper-plane.active {
+  animation: planeFly 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* Dotted trail behind plane */
+@keyframes trailDraw {
+  0% { stroke-dashoffset: 800; opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.plane-trail {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.plane-trail path {
+  fill: none;
+  stroke: #F27D26;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+  stroke-dashoffset: 800;
+  opacity: 0;
+}
+
+.plane-trail.active path {
+  animation: trailDraw 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* Typewriter cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: #F27D26;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 0.6s step-end infinite;
+}
+
+/* Fade out for radar section */
+@keyframes fadeOutRadar {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.radar-fade-out {
+  animation: fadeOutRadar 0.3s ease-out forwards;
+}
