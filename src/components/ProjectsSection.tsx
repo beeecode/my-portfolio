@@ -6,7 +6,7 @@ import { PROJECTS } from '../data';
 export default function ProjectsSection() {
   return (
     <section id="projects" className="section-padding max-w-7xl mx-auto">
-      <SectionLabel number="02" text="Featured Projects" />
+      <SectionLabel text="Featured Projects" />
       <h2 className="section-heading mb-12">
         Selected <span className="text-accent">Work</span>
       </h2>

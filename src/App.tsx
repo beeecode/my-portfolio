@@ -82,10 +82,11 @@ export default function App() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight mb-6 uppercase"
+                className="font-display text-2xl sm:text-5xl md:text-6xl lg:text-6xl font-bold leading-[0.9] tracking-tight mb-6 uppercase"
               >
-                ABDULHAMEED // <br />
-                FRONTEND DEV
+                ABDULHAMEED <br />
+                SHERIF// <br />
+                WEB DEV
               </motion.h1>
 
               <motion.p

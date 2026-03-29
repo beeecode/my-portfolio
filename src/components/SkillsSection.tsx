@@ -5,7 +5,7 @@ import { SKILLS } from '../data';
 export default function SkillsSection() {
   return (
     <section id="skills" className="section-padding max-w-7xl mx-auto">
-      <SectionLabel number="03" text="Skills & Tools" />
+      <SectionLabel  text="Skills & Tools" />
       <h2 className="section-heading mb-12">
         My <span className="text-accent">Toolkit</span>
       </h2>

@@ -13,11 +13,11 @@ export type ProjectType = { id: string; title: string; desc: string; image: stri
 export const PROJECTS: ProjectType[] = [
   {
     id: 'AS-01',
-    title: 'IRON & GRACE | Fitness',
-    desc: 'Premium fitness and wellness coaching platform featuring subscription tiers, program highlights, and a clean, responsive frontend tailored for high-conversion user journeys.',
+    title: 'F1 |  Landing Page',
+    desc: 'A modern landing page for Formula 1 enthusiasts, featuring dynamic content and a sleek design.',
     image: '/img001.png',
     tags: ['React.js', 'Tailwind CSS', 'Frontend'],
-    link: 'https://iron-grace.vercel.app/',
+    link: 'https://formula1-sable.vercel.app/',
   },
   {
     id: 'AS-02',
@@ -80,6 +80,6 @@ export const EXPERIENCE = [
 
 export const SOCIALS = [
   { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/abdulhameed-sherif' },
-  { icon: Github, label: 'GitHub', href: 'https://github.com/abdulhameed-sherif' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/beeecode' },
   { icon: Mail, label: 'Email', href: 'mailto:abdulhameedsherif@gmail.com' },
 ];

@@ -6,7 +6,7 @@ import { EXPERIENCE } from '../data';
 export default function ExperienceSection() {
   return (
     <section id="experience" className="section-padding max-w-7xl mx-auto">
-      <SectionLabel number="04" text="Experience" />
+      <SectionLabel  text="Experience" />
       <h2 className="section-heading mb-12">
         Work <span className="text-accent">History</span>
       </h2>

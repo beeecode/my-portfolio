@@ -4,7 +4,7 @@ import { SectionLabel } from './SectionLabel';
 export default function AboutSection() {
   return (
     <section id="about" className="section-padding max-w-7xl mx-auto">
-      <SectionLabel number="01" text="About Me" />
+      <SectionLabel text="About Me" />
 
       <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
         {/* Text / Left Side */}
@@ -27,7 +27,7 @@ export default function AboutSection() {
 
           <div className="space-y-6 text-muted leading-relaxed text-[15px] sm:text-base border-l border-white/10 pl-6 md:pl-8">
             <p>
-              I am Abdulhameed Sherif—a frontend engineer operating out of Nigeria. To me, the browser isn't merely a canvas; it's a high-performance engine waiting to be tuned. Over the last two years, I've immersed myself in the React and Next.js ecosystems, writing scalable logic that drives immersive, pixel-perfect realities.
+              I am Abdulhameed Sherif, a frontend engineer operating out of Nigeria. To me, the browser isn't merely a canvas; it's a high-performance engine waiting to be tuned. Over the last two years, I've immersed myself in the React and Next.js ecosystems, writing scalable logic that drives immersive, pixel-perfect realities.
             </p>
             <p>
               My approach bridges raw computational power with human empathy. Whether I'm orchestrating complex REST API data states, ensuring fluid 60FPS motion, or architecting the layout for a live logistics platform like Sabiguy, my philosophy remains constant: <strong className="text-paper font-medium">technology should feel invisible to the user.</strong>

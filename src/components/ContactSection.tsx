@@ -81,7 +81,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="section-padding max-w-7xl mx-auto">
-      <SectionLabel number="05" text="Get In Touch" />
+      <SectionLabel  text="Get In Touch" />
       <div className="grid md:grid-cols-12 gap-12">
         <div className="md:col-span-5 space-y-6">
           <h2 className="section-heading">
