@@ -12,7 +12,7 @@ export type ProjectType = { id: string; title: string; desc: string; image: stri
 
 export const PROJECTS: ProjectType[] = [
   {
-    id: 'AS-01',
+    id: '01',
     title: 'F1 |  Landing Page',
     desc: 'A modern landing page for Formula 1 enthusiasts, featuring dynamic content and a sleek design.',
     image: '/img001.png',
@@ -20,7 +20,7 @@ export const PROJECTS: ProjectType[] = [
     link: 'https://formula1-sable.vercel.app/',
   },
   {
-    id: 'AS-02',
+    id: '02',
     title: 'Afrostyle | Fashion Marketplace',
     desc: 'A comprehensive fashion and tailoring platform in Nigeria. Built secure booking flows, order tracking, and a dedicated tailor dashboard full-stack implementation.',
     image: '/img002.png',
@@ -28,7 +28,7 @@ export const PROJECTS: ProjectType[] = [
     link: 'https://afrostyleapp.vercel.app/',
   },
   {
-    id: 'AS-03',
+    id: '03',
     title: 'SkyCast | Weather Dashboard',
     desc: 'A dynamic weather dashboard providing live meteorological data, complete with city search, unit toggles, and a custom animated UI. Built with Vanilla JS and OpenWeatherMap API.',
     image: '/img003.png',
@@ -36,7 +36,7 @@ export const PROJECTS: ProjectType[] = [
     link: 'https://autoflow-fk64.vercel.app/',
   },
   {
-    id: 'AS-04',
+    id: '04',
     title: 'AuthFlow | Authentication UI',
     desc: 'A seamless authentication flow featuring refined login and registration pages, robust form validation, and a clean, accessible user interface built for modern web applications.',
     image: '/img004.png',

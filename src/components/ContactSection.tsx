@@ -131,7 +131,7 @@ export default function ContactSection() {
                       <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Name</label>
                       <input
                         type="text"
-                        placeholder="John Doe"
+                        placeholder="BEECODE"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
@@ -143,7 +143,7 @@ export default function ContactSection() {
                       <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Email</label>
                       <input
                         type="email"
-                        placeholder="john@example.com"
+                        placeholder="Beecode@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required

@@ -207,7 +207,7 @@ export default function App() {
       <footer className="border-t border-white/5 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted text-xs font-mono">
-            © {new Date().getFullYear()} Abdulhameed Sherif. All rights reserved.
+            © {new Date().getFullYear()} Abdulhameed Sherif
           </p>
         </div>
       </footer>
