@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Calendar, MapPin } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
@@ -6,14 +8,13 @@ import { EXPERIENCE } from '../data';
 export default function ExperienceSection() {
   return (
     <section id="experience" className="section-padding max-w-7xl mx-auto">
-      <SectionLabel  text="Experience" />
+      <SectionLabel text="Experience" />
       <h2 className="section-heading mb-12">
         Work <span className="text-accent">History</span>
       </h2>
       <div className="relative">
         {/* Timeline Line */}
         <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-white/10" />
-
         <div className="space-y-12">
           {EXPERIENCE.map((exp, i) => (
             <motion.div
@@ -26,7 +27,6 @@ export default function ExperienceSection() {
             >
               {/* Timeline Dot */}
               <div className="absolute left-2.5 md:left-6.5 top-1.5 w-3 h-3 rounded-full bg-accent border-2 border-ink" />
-
               <div className="technical-border rounded-2xl p-6 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
                   <div>

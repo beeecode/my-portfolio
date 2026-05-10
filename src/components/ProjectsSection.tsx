@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
@@ -15,6 +17,8 @@ export default function ProjectsSection() {
           <motion.a
             key={project.id}
             href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -36,7 +40,6 @@ export default function ProjectsSection() {
                   <ArrowUpRight size={14} />
                 </div>
               </div>
-
               <div className="p-5 sm:p-6">
                 <h3 className="font-display text-lg font-bold mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
                 <p className="text-muted text-sm leading-relaxed mb-4 line-clamp-2">{project.desc}</p>

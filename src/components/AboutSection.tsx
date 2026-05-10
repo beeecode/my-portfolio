@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { SectionLabel } from './SectionLabel';
 
@@ -27,10 +29,10 @@ export default function AboutSection() {
 
           <div className="space-y-6 text-muted leading-relaxed text-[15px] sm:text-base border-l border-white/10 pl-6 md:pl-8">
             <p>
-              I am Abdulhameed Sherif, a frontend engineer operating out of Nigeria. To me, the browser isn't merely a canvas; it's a high-performance engine waiting to be tuned. Over the last two years, I've immersed myself in the React and Next.js ecosystems, writing scalable logic that drives immersive, pixel-perfect realities.
+              I am Abdulhameed Sherif, a full stack developer based in Nigeria. To me, building software isn't just about what the user sees — it's about the entire system that powers it. Over the last two years, I've worked across the React and Next.js ecosystems on the frontend, and Node.js, Express, and PostgreSQL on the backend, shipping complete, production-ready applications.
             </p>
             <p>
-              My approach bridges raw computational power with human empathy. Whether I'm orchestrating complex REST API data states, ensuring fluid 60FPS motion, or architecting the layout for a live logistics platform like Sabiguy, my philosophy remains constant: <strong className="text-paper font-medium">technology should feel invisible to the user.</strong>
+              My approach bridges raw technical architecture with human-centered design. Whether I'm designing REST APIs, modelling database schemas, or crafting fluid 60FPS interfaces, my philosophy stays constant: <strong className="text-paper font-medium">every layer of the stack should serve the user invisibly.</strong>
             </p>
           </div>
         </motion.div>

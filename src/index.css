@@ -8,10 +8,10 @@
 
   --color-ink: #000000;
   --color-paper: #FFFFFF;
-  --color-muted: #8E9299;
+  /* --color-muted: #8E9299;
   --color-accent: #F27D26;
   --color-surface: #0A0A0A;
-  --color-surface-light: #111111;
+  --color-surface-light: #111111; */
 }
 
 @layer base {
@@ -75,24 +75,32 @@
 /* 3D Card Flip Container */
 .form-flip-container {
   perspective: 1200px;
+  overflow: visible;
 }
 
 .form-flip-inner {
   position: relative;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
+  overflow: visible;
 }
 
 .form-flip-inner.flipped {
   transform: rotateY(180deg);
 }
 
-.form-front,
-.form-back {
+.form-front {
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .form-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   position: absolute;
   inset: 0;
   transform: rotateY(180deg);
@@ -104,6 +112,7 @@
   border-radius: 1rem;
   background: #0A0A0A;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* Glitch dissolve on form fields */
@@ -120,102 +129,88 @@
   animation: glitchDissolve 0.4s ease-out forwards;
 }
 
-/* Radar / Sonar Pulse */
-@keyframes radarPulse {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.6; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+/* ── Success Animation: Signal Transmission ── */
+
+/* Dot grid background */
+.success-grid-bg {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
-.radar-ring {
+/* Scanline sweep */
+.success-scanline {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  border: 1px solid #F27D26;
-  transform: translate(-50%, -50%) scale(0);
-  pointer-events: none;
-}
-
-.radar-ring.active:nth-child(1) { animation: radarPulse 1.5s ease-out 0s forwards; }
-.radar-ring.active:nth-child(2) { animation: radarPulse 1.5s ease-out 0.3s forwards; }
-.radar-ring.active:nth-child(3) { animation: radarPulse 1.5s ease-out 0.6s forwards; }
-.radar-ring.active:nth-child(4) { animation: radarPulse 1.5s ease-out 0.9s forwards; }
-
-/* Radar center dot */
-.radar-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  background: #F27D26;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 12px #F27D26, 0 0 24px rgba(242, 125, 38, 0.4);
-}
-
-@keyframes centerPulseGlow {
-  0%, 100% { box-shadow: 0 0 12px #F27D26, 0 0 24px rgba(242, 125, 38, 0.4); }
-  50% { box-shadow: 0 0 20px #F27D26, 0 0 40px rgba(242, 125, 38, 0.6); }
-}
-
-.radar-center.active {
-  animation: centerPulseGlow 0.8s ease-in-out infinite;
-}
-
-/* Paper Plane */
-@keyframes planeFly {
-  0% { offset-distance: 0%; opacity: 1; }
-  85% { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
-}
-
-.paper-plane {
-  position: absolute;
-  bottom: 0;
   left: 0;
-  width: 24px;
-  height: 24px;
-  color: #F27D26;
-  offset-path: path('M 0 280 C 80 200, 200 100, 350 50 S 500 -30, 600 -80');
-  offset-rotate: auto;
+  right: 0;
+  height: 2px;
+  top: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0;
+}
+
+.success-scanline.active {
+  animation: scanSweep 1.4s ease-in-out forwards;
+}
+
+@keyframes scanSweep {
+  0%   { top: 0%;   opacity: 0; }
+  5%   { opacity: 0.8; }
+  90%  { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Signal rings */
+.signal-ring {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid var(--paper);
+  border-radius: 50%;
   opacity: 0;
   pointer-events: none;
+}
+
+.signal-ring.active {
+  animation: signalExpand 2s ease-out infinite;
+}
+
+@keyframes signalExpand {
+  0%   { width: 52px;  height: 52px;  opacity: 0.7; }
+  100% { width: 240px; height: 240px; opacity: 0; }
+}
+
+/* Core checkmark circle */
+.signal-core {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: rgba(255, 255, 255, 0.05);
   z-index: 10;
 }
 
-.paper-plane.active {
-  animation: planeFly 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+.signal-core.active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.3), 0 0 60px rgba(255, 255, 255, 0.08);
+  animation: coreGlow 1.4s ease-in-out infinite 0.5s;
 }
 
-/* Dotted trail behind plane */
-@keyframes trailDraw {
-  0% { stroke-dashoffset: 800; opacity: 0.6; }
-  80% { opacity: 0.6; }
-  100% { stroke-dashoffset: 0; opacity: 0; }
+@keyframes coreGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.25), 0 0 50px rgba(255,255,255,0.06); }
+  50%       { box-shadow: 0 0 35px rgba(255,255,255,0.45), 0 0 80px rgba(255,255,255,0.12); }
 }
 
-.plane-trail {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.plane-trail path {
-  fill: none;
-  stroke: #F27D26;
-  stroke-width: 1.5;
-  stroke-dasharray: 6 6;
-  stroke-dashoffset: 800;
-  opacity: 0;
-}
-
-.plane-trail.active path {
-  animation: trailDraw 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-}
 
 /* Typewriter cursor */
 @keyframes blink {
@@ -227,7 +222,7 @@
   display: inline-block;
   width: 2px;
   height: 1.2em;
-  background: #F27D26;
+  background: var(--paper);
   margin-left: 2px;
   vertical-align: text-bottom;
   animation: blink 0.6s step-end infinite;

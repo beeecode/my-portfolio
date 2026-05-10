@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Send } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { SectionLabel } from './SectionLabel';
 import { SOCIALS } from '../data';
 
@@ -9,10 +11,10 @@ export default function ContactSection() {
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formMsg, setFormMsg] = useState('');
 
-  // Animation states
-  const [animPhase, setAnimPhase] = useState<'idle' | 'glitch' | 'flipped' | 'plane' | 'fadeOut' | 'flipBack'>('idle');
   const [typewriterText, setTypewriterText] = useState('');
+  const [showDetails, setShowDetails] = useState(false);
   const typewriterRef = useRef<number | null>(null);
+  const transmissionId = useRef<string>('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,11 +27,12 @@ export default function ContactSection() {
       });
       const data = await res.json();
       if (res.ok) {
+        transmissionId.current = Math.random().toString(36).slice(2, 10).toUpperCase();
+        setTypewriterText('');
+        setShowDetails(false);
+        setFormData({ name: '', email: '', message: '' });
         setFormStatus('success');
         setFormMsg(data.message || 'Message sent!');
-        setFormData({ name: '', email: '', message: '' });
-        // Kick off the cinematic sequence
-        setAnimPhase('glitch');
       } else {
         setFormStatus('error');
         setFormMsg(data.error || 'Something went wrong.');
@@ -40,49 +43,43 @@ export default function ContactSection() {
     }
   };
 
-  // Orchestrate the animation sequence
+  // Typewriter when success overlay appears
   useEffect(() => {
-    if (animPhase === 'glitch') {
-      const t = window.setTimeout(() => setAnimPhase('flipped'), 450);
-      return () => clearTimeout(t);
-    }
-    if (animPhase === 'flipped') {
-      const fullText = 'MESSAGE RECEIVED';
-      let i = 0;
-      setTypewriterText('');
+    if (formStatus !== 'success') return;
+
+    const fullText = 'TRANSMISSION COMPLETE';
+    let i = 0;
+    const delay = window.setTimeout(() => {
       typewriterRef.current = window.setInterval(() => {
         i++;
         setTypewriterText(fullText.slice(0, i));
         if (i >= fullText.length) {
           if (typewriterRef.current) clearInterval(typewriterRef.current);
-          setTimeout(() => setAnimPhase('plane'), 200);
+          window.setTimeout(() => setShowDetails(true), 200);
         }
-      }, 50);
-      return () => { if (typewriterRef.current) clearInterval(typewriterRef.current); };
-    }
-    if (animPhase === 'plane') {
-      const t = window.setTimeout(() => setAnimPhase('fadeOut'), 1200);
-      return () => clearTimeout(t);
-    }
-    if (animPhase === 'fadeOut') {
-      const t = window.setTimeout(() => setAnimPhase('flipBack'), 350);
-      return () => clearTimeout(t);
-    }
-    if (animPhase === 'flipBack') {
-      const t = window.setTimeout(() => {
-        setAnimPhase('idle');
-        setFormStatus('idle');
-        setFormMsg('');
-        setTypewriterText('');
-      }, 650);
-      return () => clearTimeout(t);
-    }
-  }, [animPhase]);
+      }, 55);
+    }, 400);
+
+    // Auto-reset after 4.5s
+    const reset = window.setTimeout(() => {
+      if (typewriterRef.current) clearInterval(typewriterRef.current);
+      setFormStatus('idle');
+      setTypewriterText('');
+      setShowDetails(false);
+    }, 4500);
+
+    return () => {
+      clearTimeout(delay);
+      clearTimeout(reset);
+      if (typewriterRef.current) clearInterval(typewriterRef.current);
+    };
+  }, [formStatus]);
 
   return (
     <section id="contact" className="section-padding max-w-7xl mx-auto">
-      <SectionLabel  text="Get In Touch" />
+      <SectionLabel text="Get In Touch" />
       <div className="grid md:grid-cols-12 gap-12">
+        {/* Left */}
         <div className="md:col-span-5 space-y-6">
           <h2 className="section-heading">
             Let's Build <span className="text-accent">Together</span>
@@ -90,7 +87,6 @@ export default function ContactSection() {
           <p className="text-muted leading-relaxed max-w-md">
             Got a project in mind? I'm always open to collaborating on exciting ideas or discussing new opportunities. Drop me a message and let's create something remarkable.
           </p>
-
           <div className="flex flex-wrap gap-3 pt-4">
             {SOCIALS.map(({ icon: Icon, label, href }) => (
               <a
@@ -107,101 +103,142 @@ export default function ContactSection() {
           </div>
         </div>
 
+        {/* Right: Form + Success overlay */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="md:col-span-7"
+          className="md:col-span-7 relative"
         >
-          <div className="form-flip-container">
-            <div className={`form-flip-inner ${animPhase === 'flipped' || animPhase === 'plane' || animPhase === 'fadeOut' ? 'flipped' : ''}`}>
-              <div className="form-front">
-                <form
-                  onSubmit={handleSubmit}
-                  className="technical-border rounded-2xl p-6 sm:p-8 bg-white/[0.02] space-y-5"
-                >
-                  {formStatus === 'error' && (
-                    <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-mono">
-                      ✕ {formMsg}
-                    </div>
-                  )}
-                  <div className={`grid sm:grid-cols-2 gap-5 ${animPhase === 'glitch' ? 'glitch-dissolve' : ''}`}>
-                    <div>
-                      <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Name</label>
-                      <input
-                        type="text"
-                        placeholder="BEECODE"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required
-                        maxLength={100}
-                        className="w-full h-11 px-4 rounded-xl bg-white/[0.05] technical-border text-sm font-sans text-paper placeholder:text-muted/50 outline-none focus:border-accent/50 transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Email</label>
-                      <input
-                        type="email"
-                        placeholder="Beecode@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
-                        className="w-full h-11 px-4 rounded-xl bg-white/[0.05] technical-border text-sm font-sans text-paper placeholder:text-muted/50 outline-none focus:border-accent/50 transition-colors"
-                      />
-                    </div>
-                  </div>
-                  <div className={animPhase === 'glitch' ? 'glitch-dissolve' : ''} style={{ animationDelay: '0.05s' }}>
-                    <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Message</label>
-                    <textarea
-                      rows={5}
-                      placeholder="Tell me about your project..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                      maxLength={2000}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.05] technical-border text-sm font-sans text-paper placeholder:text-muted/50 outline-none focus:border-accent/50 transition-colors resize-none"
-                    />
-                  </div>
-                  <div className={animPhase === 'glitch' ? 'glitch-dissolve' : ''} style={{ animationDelay: '0.1s' }}>
-                    <button
-                      type="submit"
-                      disabled={formStatus === 'loading' || animPhase !== 'idle'}
-                      className="flex items-center justify-center gap-2 w-full sm:w-auto h-11 px-8 rounded-full bg-accent text-ink font-display font-bold text-sm uppercase tracking-wider hover:bg-accent/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                    >
-                      {formStatus === 'loading' ? 'Sending...' : 'Send Message'} <Send size={14} />
-                    </button>
-                  </div>
-                </form>
+          {/* ── FORM ── */}
+          <form
+            onSubmit={handleSubmit}
+            className="technical-border rounded-2xl p-6 sm:p-8 bg-white/[0.02] space-y-5"
+          >
+            {formStatus === 'error' && (
+              <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-mono">
+                ✕ {formMsg}
               </div>
-
-              <div className="form-back">
-                <div className={animPhase === 'fadeOut' ? 'radar-fade-out' : ''}>
-                  <div className={`radar-ring ${animPhase === 'flipped' || animPhase === 'plane' ? 'active' : ''}`} />
-                  <div className={`radar-ring ${animPhase === 'flipped' || animPhase === 'plane' ? 'active' : ''}`} />
-                  <div className={`radar-ring ${animPhase === 'flipped' || animPhase === 'plane' ? 'active' : ''}`} />
-                  <div className={`radar-ring ${animPhase === 'flipped' || animPhase === 'plane' ? 'active' : ''}`} />
-                  <div className={`radar-center ${animPhase === 'flipped' || animPhase === 'plane' ? 'active' : ''}`} />
-                </div>
-
-                <div className="relative z-10 text-center px-4">
-                  <span className="font-mono text-xl sm:text-2xl md:text-3xl font-bold tracking-[0.15em] text-accent uppercase">
-                    {typewriterText}
-                  </span>
-                  {(animPhase === 'flipped' || animPhase === 'plane') && (
-                    <span className="typewriter-cursor" />
-                  )}
-                </div>
-
-                <svg className={`paper-plane ${animPhase === 'plane' ? 'active' : ''}`} viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                </svg>
-                <svg className={`plane-trail ${animPhase === 'plane' ? 'active' : ''}`} viewBox="0 0 600 300" preserveAspectRatio="none">
-                  <path d="M 0 280 C 80 200, 200 100, 350 50 S 500 -30, 600 -80" />
-                </svg>
+            )}
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Name</label>
+                <input
+                  type="text"
+                  placeholder="BEECODE"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  maxLength={100}
+                  className="w-full h-11 px-4 rounded-xl bg-white/[0.05] technical-border text-sm font-sans text-paper placeholder:text-muted/50 outline-none focus:border-accent/50 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Email</label>
+                <input
+                  type="email"
+                  placeholder="Beecode@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="w-full h-11 px-4 rounded-xl bg-white/[0.05] technical-border text-sm font-sans text-paper placeholder:text-muted/50 outline-none focus:border-accent/50 transition-colors"
+                />
               </div>
             </div>
-          </div>
+            <div>
+              <label className="block font-mono text-[10px] uppercase tracking-wider text-muted mb-2">Message</label>
+              <textarea
+                rows={5}
+                placeholder="Tell me about your project..."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                required
+                maxLength={2000}
+                className="w-full px-4 py-3 rounded-xl bg-white/[0.05] technical-border text-sm font-sans text-paper placeholder:text-muted/50 outline-none focus:border-accent/50 transition-colors resize-none"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={formStatus === 'loading' || formStatus === 'success'}
+              className="flex items-center justify-center gap-2 w-full sm:w-auto h-11 px-8 rounded-full technical-border border-accent/50 bg-accent/10 text-accent font-display font-bold text-sm uppercase tracking-wider hover:bg-accent hover:text-ink transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {formStatus === 'loading' ? 'Sending...' : 'Send Message'} <Send size={14} />
+            </button>
+          </form>
+
+          {/* ── SUCCESS OVERLAY ── */}
+          <AnimatePresence>
+            {formStatus === 'success' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0 rounded-2xl bg-ink border border-white/10 flex flex-col items-center justify-center overflow-hidden"
+              >
+                {/* Dot grid */}
+                <div className="absolute inset-0 success-grid-bg opacity-60" />
+
+                {/* Scanline */}
+                <div className="success-scanline active" />
+
+                {/* Corner brackets */}
+                <div className="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-paper/40" />
+                <div className="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-paper/40" />
+                <div className="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-paper/40" />
+                <div className="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-paper/40" />
+
+                {/* Signal rings + core */}
+                <div className="relative flex items-center justify-center mb-8">
+                  {[0, 1, 2, 3].map(i => (
+                    <div
+                      key={i}
+                      className="signal-ring active"
+                      style={{ animationDelay: `${i * 0.45}s` }}
+                    />
+                  ))}
+                  <div className="signal-core active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-7 h-7">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Text */}
+                <div className="relative z-10 text-center px-6">
+                  <p className="font-mono text-[9px] text-paper/40 tracking-[0.3em] uppercase mb-2">Signal Status</p>
+                  <span className="font-mono text-xl sm:text-2xl font-bold tracking-[0.15em] text-paper uppercase">
+                    {typewriterText}
+                  </span>
+                  <span className="typewriter-cursor" />
+
+                  {/* Details */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: showDetails ? 1 : 0, y: showDetails ? 0 : 8 }}
+                    transition={{ duration: 0.4 }}
+                    className="mt-5"
+                  >
+                    <div className="inline-flex flex-col gap-1.5 border border-white/10 rounded-xl px-5 py-3 bg-white/[0.03]">
+                      <div className="flex items-center justify-between gap-8">
+                        <span className="font-mono text-[9px] text-paper/40 tracking-wider uppercase">REF ID</span>
+                        <span className="font-mono text-[9px] text-paper tracking-wider">{transmissionId.current}</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-8">
+                        <span className="font-mono text-[9px] text-paper/40 tracking-wider uppercase">STATUS</span>
+                        <span className="font-mono text-[9px] text-green-400 tracking-wider">● DELIVERED</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-8">
+                        <span className="font-mono text-[9px] text-paper/40 tracking-wider uppercase">CHANNEL</span>
+                        <span className="font-mono text-[9px] text-paper/60 tracking-wider">ENCRYPTED</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>
