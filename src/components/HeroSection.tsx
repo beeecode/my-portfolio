@@ -155,7 +155,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap justify-start lg:justify-end gap-2 sm:gap-3">
             {[
               { label: "REACT", sub: "19" },
-              { label: "NEXT.JS", sub: "15" },
+              { label: "NEXT.JS", sub: "16" },
               { label: "NODE.JS", sub: "LTS" },
               { label: "TAILWIND", sub: "V4" }
             ].map((tag, i) => (

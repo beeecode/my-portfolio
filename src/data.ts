@@ -29,19 +29,19 @@ export const PROJECTS: ProjectType[] = [
   },
   {
     id: '03',
-    title: 'SkyCast | Weather Dashboard',
-    desc: 'A dynamic weather dashboard providing live meteorological data, complete with city search, unit toggles, and a custom animated UI. Built with Vanilla JS and OpenWeatherMap API.',
-    image: '/img003.png',
-    tags: ['JavaScript', 'HTML5', 'CSS3', 'REST API'],
-    link: 'https://autoflow-fk64.vercel.app/',
+    title: 'Ghost Mode | OpsDesk Dashboard',
+    desc: 'A clean operations dashboard interface featuring project overviews, resource metrics, status tracking, and a structured admin-style layout.',
+    image: '/ghost-mode-psi.png',
+    tags: ['React.js', 'Dashboard UI', 'Data Tables'],
+    link: 'https://ghost-mode-psi.vercel.app/',
   },
   {
     id: '04',
-    title: 'AuthFlow | Authentication UI',
-    desc: 'A seamless authentication flow featuring refined login and registration pages, robust form validation, and a clean, accessible user interface built for modern web applications.',
-    image: '/img004.png',
-    tags: ['React.js', 'Tailwind CSS', 'Auth UI'],
-    link: 'https://autoflow-lime.vercel.app/',
+    title: 'Guaranteed CBT | Exam Portal',
+    desc: 'A polished CBT access platform with student and admin entry points for live exams, assessment management, and result workflows.',
+    image: '/guranteed-cbt.png',
+    tags: ['React.js', 'Tailwind CSS', 'CBT Platform'],
+    link: 'https://guranteed-cbt.vercel.app/',
   }
 ];
 
@@ -89,6 +89,28 @@ export const SKILLS = [
 ];
 
 export const EXPERIENCE = [
+  {
+    role: 'App Developer',
+    company: 'Artheistlab',
+    period: 'Current',
+    location: 'Nigeria',
+    points: [
+      'Building responsive app interfaces and production-ready features for user-facing digital products.',
+      'Implementing reusable components, smooth user flows, and API integrations across the application.',
+      'Collaborating on design-to-development handoff, debugging issues, and improving performance and usability.',
+    ],
+  },
+  {
+    role: 'Web Developer',
+    company: 'Sabuguy',
+    period: 'Current',
+    location: 'Nigeria',
+    points: [
+      'Developing responsive web pages and interactive user interfaces for a modern logistics platform.',
+      'Connecting frontend experiences with backend APIs to support booking, tracking, and customer workflows.',
+      'Improving page performance, accessibility, and cross-device consistency across the web application.',
+    ],
+  },
   {
     role: 'Full Stack Developer',
     company: 'Freelance / Remote',

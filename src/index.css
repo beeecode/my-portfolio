@@ -8,10 +8,10 @@
 
   --color-ink: #000000;
   --color-paper: #FFFFFF;
-  /* --color-muted: #8E9299;
+  --color-muted: #8E9299;
   --color-accent: #F27D26;
   --color-surface: #0A0A0A;
-  --color-surface-light: #111111; */
+  --color-surface-light: #111111;
 }
 
 @layer base {
