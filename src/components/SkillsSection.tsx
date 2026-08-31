@@ -2,9 +2,12 @@
 
 import { motion } from 'motion/react';
 import { SectionLabel } from './SectionLabel';
-import { SKILLS } from '../data';
+import { Code2, Globe, Layers, Server } from 'lucide-react';
+import type { PortfolioContent } from '@/lib/portfolio';
 
-export default function SkillsSection() {
+const icons = { code: Code2, layers: Layers, server: Server, globe: Globe };
+
+export default function SkillsSection({ groups }: { groups: PortfolioContent['skillGroups'] }) {
   return (
     <section id="skills" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="Skills & Tools" />
@@ -12,11 +15,11 @@ export default function SkillsSection() {
         My <span className="text-accent">Toolkit</span>
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {SKILLS.map((group, i) => {
-          const IconComponent = group.icon;
+        {groups.map((group, i) => {
+          const IconComponent = icons[group.icon as keyof typeof icons] || Code2;
           return (
             <motion.div
-              key={group.category}
+              key={group.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -26,9 +29,9 @@ export default function SkillsSection() {
               <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
                 <IconComponent size={18} className="text-accent" />
               </div>
-              <h3 className="font-display text-sm font-bold uppercase tracking-wider mb-4">{group.category}</h3>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider mb-4">{group.name}</h3>
               <div className="space-y-3">
-                {group.items.map((item) => (
+                {group.skills.map((item) => (
                   <div key={item.name} className="flex items-center gap-3">
                     <i
                       className={`${item.iconClass} text-lg leading-none`}

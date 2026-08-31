@@ -1,10 +1,16 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
-import { NAV_LINKS, SOCIALS } from '../data';
+import { NAV_LINKS } from '../data';
+import type { PortfolioContent } from '@/lib/portfolio';
 
-export default function HeroSection() {
+export default function HeroSection({ settings }: { settings: PortfolioContent['settings'] }) {
+  const socials = [
+    { icon: Linkedin, label: 'LinkedIn', href: settings.linkedInUrl },
+    { icon: Github, label: 'GitHub', href: settings.githubUrl },
+    { icon: Mail, label: 'Email', href: `mailto:${settings.email}` },
+  ];
   return (
     <section id="hero" className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 relative overflow-hidden">
       <nav className="flex flex-row md:flex-col items-center justify-between md:justify-start w-full md:w-auto p-3 md:py-6 md:px-3 mb-6 md:mb-0 relative md:fixed md:left-6 md:top-1/2 md:-translate-y-1/2 z-50 bg-[#111111]/80 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-full shadow-2xl">
@@ -27,7 +33,7 @@ export default function HeroSection() {
         </div>
         <div className="flex flex-row md:flex-col border-l md:border-l-0 md:border-t border-white/10 pl-3 md:pl-0 md:pt-6 ml-1 md:ml-0 md:mt-6 shrink-0">
           <a href="#contact" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-accent transition-all group relative">
-            <img src="/Beecode-Dp.jpg" alt="Let's Talk" className="w-full h-full object-cover" />
+            <img src={settings.profileImage} alt="Let's Talk" className="w-full h-full object-cover" />
             <span className="absolute left-14 px-3 py-1.5 bg-surface border border-white/10 rounded-lg text-[10px] font-mono uppercase tracking-wider opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all pointer-events-none whitespace-nowrap z-50 shadow-xl hidden sm:block">
               Let's Talk
             </span>
@@ -43,7 +49,7 @@ export default function HeroSection() {
       >
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
-            src="/Beecode-Dp.jpg"
+            src={settings.profileImage}
             alt="Profile Background"
             className="w-full h-full object-cover object-top opacity-30 mix-blend-luminosity"
           />
@@ -76,9 +82,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-display text-2xl sm:text-5xl md:text-6xl lg:text-6xl font-bold leading-[0.9] tracking-tight mb-6 uppercase"
             >
-              ABDULHAMEED <br />
-              SHERIF// <br />
-              FULL STACK
+              {settings.name}<br />
+              {settings.role}
             </motion.h1>
 
             <motion.p
@@ -87,11 +92,11 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-muted text-sm sm:text-base leading-relaxed max-w-md mb-8"
             >
-              Full Stack Developer with 2+ years of experience building end-to-end web applications — from pixel-accurate React interfaces to scalable Node.js APIs and database architectures. Specializing in React, Next.js, TypeScript, and Express with a focus on performance and clean code.
+              {settings.heroDescription}
             </motion.p>
 
             <div className="flex gap-3 mb-8 md:mb-0">
-              {SOCIALS.slice(0, 3).map(({ icon: Icon, label, href }) => (
+              {socials.map(({ icon: Icon, label, href }) => (
                 <motion.a
                   key={label}
                   href={href}

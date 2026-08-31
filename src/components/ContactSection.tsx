@@ -1,12 +1,17 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Send } from 'lucide-react';
+import { Github, Linkedin, Mail, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SectionLabel } from './SectionLabel';
-import { SOCIALS } from '../data';
+import type { PortfolioContent } from '@/lib/portfolio';
 
-export default function ContactSection() {
+export default function ContactSection({ settings }: { settings: PortfolioContent['settings'] }) {
+  const socials = [
+    { icon: Linkedin, label: 'LinkedIn', href: settings.linkedInUrl },
+    { icon: Github, label: 'GitHub', href: settings.githubUrl },
+    { icon: Mail, label: 'Email', href: `mailto:${settings.email}` },
+  ];
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formMsg, setFormMsg] = useState('');
@@ -82,13 +87,13 @@ export default function ContactSection() {
         {/* Left */}
         <div className="md:col-span-5 space-y-6">
           <h2 className="section-heading">
-            Let's Build <span className="text-accent">Together</span>
+            {settings.contactHeading}
           </h2>
           <p className="text-muted leading-relaxed max-w-md">
-            Got a project in mind? I'm always open to collaborating on exciting ideas or discussing new opportunities. Drop me a message and let's create something remarkable.
+            {settings.contactText}
           </p>
           <div className="flex flex-wrap gap-3 pt-4">
-            {SOCIALS.map(({ icon: Icon, label, href }) => (
+            {socials.map(({ icon: Icon, label, href }) => (
               <a
                 key={label}
                 href={href}

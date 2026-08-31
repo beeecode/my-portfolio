@@ -6,11 +6,15 @@ import ProjectsSection from '../components/ProjectsSection';
 import SkillsSection from '../components/SkillsSection';
 import ExperienceSection from '../components/ExperienceSection';
 import ContactSection from '../components/ContactSection';
+import { getPortfolioContent } from '@/lib/portfolio';
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const content = await getPortfolioContent();
   return (
     <div className="min-h-screen bg-ink text-paper relative md:pl-28 overflow-x-hidden">
-      <HeroSection />
+      <HeroSection settings={content.settings} />
 
       {/* ═══ SECTIONS ═══ */}
       <Suspense fallback={
@@ -18,18 +22,18 @@ export default function Home() {
           <div className="w-8 h-8 rounded-full border-r-2 border-accent animate-spin" />
         </div>
       }>
-        <AboutSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ContactSection />
+        <AboutSection settings={content.settings} />
+        <ProjectsSection projects={content.projects.filter((project) => project.visible)} />
+        <SkillsSection groups={content.skillGroups} />
+        <ExperienceSection experiences={content.experiences.filter((experience) => experience.visible)} />
+        <ContactSection settings={content.settings} />
       </Suspense>
 
       {/* ═══ FOOTER ═══ */}
       <footer className="border-t border-white/5 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted text-xs font-mono">
-            © {new Date().getFullYear()} Abdulhameed Sherif
+            © {new Date().getFullYear()} {content.settings.name}
           </p>
         </div>
       </footer>

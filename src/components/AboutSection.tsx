@@ -2,8 +2,9 @@
 
 import { motion } from 'motion/react';
 import { SectionLabel } from './SectionLabel';
+import type { PortfolioContent } from '@/lib/portfolio';
 
-export default function AboutSection() {
+export default function AboutSection({ settings }: { settings: PortfolioContent['settings'] }) {
   return (
     <section id="about" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="About Me" />
@@ -19,20 +20,20 @@ export default function AboutSection() {
         >
           <div>
             <h2 className="font-display text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.05] mb-6">
-              Logic <br />
-              <span className="italic text-accent font-serif tracking-normal font-light">Emotion</span>
+              {settings.aboutHeading} <br />
+              <span className="italic text-accent font-serif tracking-normal font-light">{settings.aboutAccent}</span>
             </h2>
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-accent/80 font-bold">
-              Code Your Reality
+              {settings.aboutEyebrow}
             </p>
           </div>
 
           <div className="space-y-6 text-muted leading-relaxed text-[15px] sm:text-base border-l border-white/10 pl-6 md:pl-8">
             <p>
-              I am Abdulhameed Sherif, a full stack developer based in Nigeria. To me, building software isn't just about what the user sees — it's about the entire system that powers it. Over the last two years, I've worked across the React and Next.js ecosystems on the frontend, and Node.js, Express, and PostgreSQL on the backend, shipping complete, production-ready applications.
+              {settings.aboutParagraphOne}
             </p>
             <p>
-              My approach bridges raw technical architecture with human-centered design. Whether I'm designing REST APIs, modelling database schemas, or crafting fluid 60FPS interfaces, my philosophy stays constant: <strong className="text-paper font-medium">every layer of the stack should serve the user invisibly.</strong>
+              {settings.aboutParagraphTwo}
             </p>
           </div>
         </motion.div>
@@ -52,7 +53,7 @@ export default function AboutSection() {
 
           <div className="relative z-10 w-full max-w-sm ml-auto">
             <div className="aspect-[3/4] overflow-hidden technical-border relative grayscale contrast-125 hover:grayscale-0 hover:contrast-100 transition-all duration-700">
-              <img src="/Beecode-Dp.jpg" alt="Abdulhameed Sherif" className="w-full h-full object-cover" />
+              <img src={settings.profileImage} alt={settings.name} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>

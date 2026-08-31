@@ -3,9 +3,9 @@
 import { motion } from 'motion/react';
 import { Calendar, MapPin } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
-import { EXPERIENCE } from '../data';
+import type { PortfolioContent } from '@/lib/portfolio';
 
-export default function ExperienceSection() {
+export default function ExperienceSection({ experiences }: { experiences: PortfolioContent['experiences'] }) {
   return (
     <section id="experience" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="Experience" />
@@ -16,7 +16,7 @@ export default function ExperienceSection() {
         {/* Timeline Line */}
         <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-white/10" />
         <div className="space-y-12">
-          {EXPERIENCE.map((exp, i) => (
+          {experiences.map((exp, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -20 }}
