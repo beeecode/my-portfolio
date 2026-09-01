@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Abdulhameed Sherif — Full Stack Developer",
     description: "End-to-end web apps. React, Next.js, Node.js, TypeScript.",
     type: "website",
-    url: "https://abdulhameed-sherif.vercel.app",
+    url: "https://beeecode.qr2tech.com/",
     images: ["/Beecode-Dp.jpg"],
   },
 };
@@ -22,8 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <script data-manageull-site-verification="mng_site_SO5zIuaMyer_QEzlIi7whTopjuZluf3aFiMGywZFibg"></script>
-        <script src="http://localhost:4100/runtime/script" data-manageull-key="mng_site_bB2TNsUAmkDGtv9GKgiTo4ZRNDvnTSTdVVcmrXj2PRI" crossOrigin="anonymous" async></script>
+        <script data-manageull-site-verification="mng_site_yv1R8flfSvAd2Gm-uwXZ1GAU1byyPldydHxR9QrEXyQ"></script>
+        <script src="http://localhost:4100/runtime/script" data-manageull-key="mng_site_yv1R8flfSvAd2Gm-uwXZ1GAU1byyPldydHxR9QrEXyQ" crossOrigin="anonymous" async></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
       <body className="antialiased">{children}</body>
