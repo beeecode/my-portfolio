@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <script data-manageull-site-verification="mng_verify_zix9emHaSloFnYZnCKajRE-gQD7eP0pOqfyBHcIUwog"></script>
+        <script data-manageull-site-verification="mng_site_SO5zIuaMyer_QEzlIi7whTopjuZluf3aFiMGywZFibg"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
       <body className="antialiased">{children}</body>
