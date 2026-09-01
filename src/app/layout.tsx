@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <script data-manageull-site-verification="mng_site_SO5zIuaMyer_QEzlIi7whTopjuZluf3aFiMGywZFibg"></script>
+        <script src="http://localhost:4100/runtime/script" data-manageull-key="mng_site_bB2TNsUAmkDGtv9GKgiTo4ZRNDvnTSTdVVcmrXj2PRI" crossOrigin="anonymous" async></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
       <body className="antialiased">{children}</body>
