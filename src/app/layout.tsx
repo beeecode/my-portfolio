@@ -22,8 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <script data-manageull-site-verification="mng_site_yv1R8flfSvAd2Gm-uwXZ1GAU1byyPldydHxR9QrEXyQ"></script>
-        <script src="http://localhost:4100/runtime/script" data-manageull-key="mng_site_yv1R8flfSvAd2Gm-uwXZ1GAU1byyPldydHxR9QrEXyQ" crossOrigin="anonymous" async></script>
+        <script
+  src="https://radical-tool-common-adrian.trycloudflare.com/runtime/script"
+  data-manageull-key="mng_site_IQdW31xALsTgvt05Ea5a3_5Sx63X23dgEuJA3zOAqEM"
+  crossOrigin="anonymous"
+  async
+></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
       <body className="antialiased">{children}</body>
