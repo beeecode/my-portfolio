@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-<script src="https://radical-tool-common-adrian.trycloudflare.com/runtime/script" data-manageull-key="mng_site_K_eQj046y8cf0LzwBAesCINx8sSQdE4rnxBstZ1L-Zw" crossOrigin="anonymous" async></script>
+<script src="https://radical-tool-common-adrian.trycloudflare.com/runtime/script" data-manageull-key="mng_site_fO4tW8n9yu4tclDzeZYFe3Jc-2biJKSsUMd6XsFhGzs" crossOrigin="anonymous" async></script>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
