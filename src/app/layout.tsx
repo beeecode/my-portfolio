@@ -25,8 +25,8 @@ export default function RootLayout({
   <script data-manageull-site-verification="mng_verify__zxQN0VYmey0r5-Jq5DJ40L5R6trm43UdphOii4fT0E"></script>
 
   <script
-    src="https://radical-tool-common-adrian.trycloudflare.com/runtime/script"
-    data-manageull-key="YOUR_EXISTING_MNG_SITE_KEY"
+    src="https://turner-brown-member-mailing.trycloudflare.com/runtime/script"
+    data-manageull-key="zxQN0VYmey0r5-Jq5DJ40L5R6trm43UdphOii4fT0E"
     crossOrigin="anonymous"
     async
   ></script>
