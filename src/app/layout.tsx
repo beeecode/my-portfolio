@@ -22,20 +22,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-  <script data-manageull-site-verification="mng_verify__zxQN0VYmey0r5-Jq5DJ40L5R6trm43UdphOii4fT0E"></script>
+        {/*
+          Manageull runtime. The script derives the API origin from its own `src`, so this host must
+          match PUBLIC_MANAGEULL_SCRIPT_CDN_URL in the Manageull dashboard.
 
-  <script
-    src="https://turner-brown-member-mailing.trycloudflare.com/runtime/script"
-    data-manageull-key="zxQN0VYmey0r5-Jq5DJ40L5R6trm43UdphOii4fT0E"
-    crossOrigin="anonymous"
-    async
-  ></script>
+          TODO: this Quick Tunnel address is dead — Cloudflare Quick Tunnels get a new hostname on
+          every restart, so published edits stop reaching this page. Replace it with a stable public
+          URL for the backend (named Cloudflare tunnel, ngrok static domain, or a real deployment).
 
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-  />
-</head>
+          `crossOrigin` is camelCase because this is JSX; the lowercase HTML spelling the dashboard
+          emits is a TypeScript error (TS2322) and fails the build.
+        */}
+        <script src="https://manageull-backend.onrender.com/runtime/script" data-manageull-key="mng_site_NK9QPVUdnWhFscAij842W4cJVmjKOn7eq1eXueHroDQ" crossOrigin="anonymous" async></script>
+
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );
