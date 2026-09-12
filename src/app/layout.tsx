@@ -33,8 +33,7 @@ export default function RootLayout({
           `crossOrigin` is camelCase because this is JSX; the lowercase HTML spelling the dashboard
           emits is a TypeScript error (TS2322) and fails the build.
         */}
-        <script src="https://manageull-backend.onrender.com/runtime/script" data-manageull-key="mng_site_NK9QPVUdnWhFscAij842W4cJVmjKOn7eq1eXueHroDQ" crossOrigin="anonymous" async></script>
-
+        <script src="https://manageull-backend.onrender.com/runtime/script" data-manageull-key="mng_site_4qfjsfbTPpi96i6FNk9e-OzZbt4-vgjZzTIKLuoaajE" crossOrigin="anonymous" async></script>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
