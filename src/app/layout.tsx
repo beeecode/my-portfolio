@@ -22,18 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/*
-          Manageull runtime. The script derives the API origin from its own `src`, so this host must
-          match PUBLIC_MANAGEULL_SCRIPT_CDN_URL in the Manageull dashboard.
-
-          TODO: this Quick Tunnel address is dead — Cloudflare Quick Tunnels get a new hostname on
-          every restart, so published edits stop reaching this page. Replace it with a stable public
-          URL for the backend (named Cloudflare tunnel, ngrok static domain, or a real deployment).
-
-          `crossOrigin` is camelCase because this is JSX; the lowercase HTML spelling the dashboard
-          emits is a TypeScript error (TS2322) and fails the build.
-        */}
-        <script src="https://manageull-backend.onrender.com/runtime/script" data-manageull-key="mng_site_HmawdBvVsTrPxPGu9OaTT1c2H2pZ4mFwMmQ9vZJa5qQ" crossOrigin="anonymous" async></script>
+        <script src="https://manageull-backend.onrender.com/runtime/script" data-manageull-key="mng_site_47srnWgOTiqkyi3Vkir_RGjiwrbgtQKmqLWVBFDJTjw" data-manageull-site-verification="mng_verify_SyiecGH5QQCc0061Cve-OLplC1NySuUOmGMPc2n8Rrg" crossOrigin="anonymous" async></script>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
