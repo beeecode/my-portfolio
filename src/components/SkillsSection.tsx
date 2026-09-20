@@ -1,11 +1,14 @@
 'use client';
 
+import { usePublishedTree } from './manageull/PublishedContent';
+
 import { motion } from 'motion/react';
 import { SectionLabel } from './SectionLabel';
 import { SKILLS } from '../data';
 
 export default function SkillsSection() {
-  return (
+  const publish = usePublishedTree();
+  return publish(
     <section id="skills" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="Skills & Tools" />
       <h2 className="section-heading mb-12">

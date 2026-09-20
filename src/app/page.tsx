@@ -6,6 +6,9 @@ import ProjectsSection from '../components/ProjectsSection';
 import SkillsSection from '../components/SkillsSection';
 import ExperienceSection from '../components/ExperienceSection';
 import ContactSection from '../components/ContactSection';
+import { PublishedTree } from '../components/manageull/PublishedContent';
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
@@ -26,13 +29,15 @@ export default function Home() {
       </Suspense>
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="border-t border-white/5 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-muted text-xs font-mono">
-            © {new Date().getFullYear()} Abdulhameed Sherif
-          </p>
-        </div>
-      </footer>
+      <PublishedTree rootPath={'html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1)'}>
+        <footer className="border-t border-white/5 py-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-muted text-xs font-mono">
+              © {new Date().getFullYear()} Abdulhameed Sherif
+            </p>
+          </div>
+        </footer>
+      </PublishedTree>
 
       {/* ═══ BACK TO TOP ═══ */}
       <a

@@ -1,12 +1,15 @@
 'use client';
 
+import { usePublishedTree } from './manageull/PublishedContent';
+
 import { motion } from 'motion/react';
 import { Calendar, MapPin } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
 import { EXPERIENCE } from '../data';
 
 export default function ExperienceSection() {
-  return (
+  const publish = usePublishedTree();
+  return publish(
     <section id="experience" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="Experience" />
       <h2 className="section-heading mb-12">

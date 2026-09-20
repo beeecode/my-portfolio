@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import "../index.css";
+import { getPublishedPage } from '../lib/manageull/server';
+import { manageullConfig } from '../lib/manageull/config';
+import { PublishedContentProvider } from '../components/manageull/PublishedContent';
+import { EditorBridge } from '../components/manageull/EditorBridge';
 
-export const metadata: Metadata = {
+const defaultMetadata: Metadata = {
   metadataBase: new URL(process.env.APP_URL || 'http://localhost:3000'),
   title: "Abdulhameed Sherif — Full Stack Developer",
   description: "Abdulhameed Sherif — Full Stack Developer building end-to-end web applications with React, Next.js, Node.js, and TypeScript.",
@@ -14,21 +18,42 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPublishedPage();
+  if (!content) return defaultMetadata;
+  const editedValue = (type: string) => content.elements.find((element) => element.type === type && element.contentChanged)?.currentValue;
+  const title = editedValue('META_TITLE') ?? content.page.seoTitle ?? defaultMetadata.title;
+  const description = editedValue('META_DESCRIPTION') ?? content.page.seoDescription ?? defaultMetadata.description;
+  return {
+    ...defaultMetadata,
+    title,
+    description,
+    alternates: content.page.canonicalUrl ? { canonical: content.page.canonicalUrl } : undefined,
+    openGraph: { ...defaultMetadata.openGraph, title, description, ...(content.page.canonicalUrl ? { url: content.page.canonicalUrl } : {}) },
+    twitter: { card: 'summary_large_image', title, description, images: ['/Beecode-Dp.jpg'] },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const content = await getPublishedPage();
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang={content?.page.language ?? 'en'} className="scroll-smooth" data-manageull-ssr="true" data-manageull-version={content?.version.id}>
       <head>
-        <script src="https://manageull-backend.onrender.com/runtime/script" data-manageull-key="mng_site_47srnWgOTiqkyi3Vkir_RGjiwrbgtQKmqLWVBFDJTjw" data-manageull-site-verification="mng_verify_SyiecGH5QQCc0061Cve-OLplC1NySuUOmGMPc2n8Rrg" crossOrigin="anonymous" async></script>
+        <meta name="manageull-site-verification" content={manageullConfig.verification} />
+        <noscript><style>{'[style*="opacity:0"]{opacity:1!important;transform:none!important}'}</style></noscript>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <PublishedContentProvider page={content}>{children}</PublishedContentProvider>
+        <EditorBridge origin={manageullConfig.origin} siteKey={manageullConfig.siteKey} verification={manageullConfig.verification} />
+      </body>
     </html>
   );
 }

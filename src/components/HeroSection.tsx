@@ -1,11 +1,14 @@
 'use client';
 
+import { usePublishedTree } from './manageull/PublishedContent';
+
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NAV_LINKS, SOCIALS } from '../data';
 
 export default function HeroSection() {
-  return (
+  const publish = usePublishedTree();
+  return publish(
     <section id="hero" className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 relative overflow-hidden">
       <nav className="flex flex-row md:flex-col items-center justify-between md:justify-start w-full md:w-auto p-3 md:py-6 md:px-3 mb-6 md:mb-0 relative md:fixed md:left-6 md:top-1/2 md:-translate-y-1/2 z-50 bg-[#111111]/80 backdrop-blur-2xl border border-white/10 rounded-3xl md:rounded-full shadow-2xl">
         <a href="#" className="font-display font-bold text-xs tracking-widest flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 md:mb-6 text-accent shrink-0">

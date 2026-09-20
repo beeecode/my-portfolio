@@ -1,12 +1,15 @@
 'use client';
 
+import { usePublishedTree } from './manageull/PublishedContent';
+
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
 import { PROJECTS } from '../data';
 
 export default function ProjectsSection() {
-  return (
+  const publish = usePublishedTree();
+  return publish(
     <section id="projects" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="Featured Projects" />
       <h2 className="section-heading mb-12">

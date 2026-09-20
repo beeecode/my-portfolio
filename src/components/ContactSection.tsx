@@ -1,5 +1,7 @@
 'use client';
 
+import { usePublishedTree } from './manageull/PublishedContent';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -7,6 +9,7 @@ import { SectionLabel } from './SectionLabel';
 import { SOCIALS } from '../data';
 
 export default function ContactSection() {
+  const publish = usePublishedTree();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formMsg, setFormMsg] = useState('');
@@ -75,7 +78,7 @@ export default function ContactSection() {
     };
   }, [formStatus]);
 
-  return (
+  return publish(
     <section id="contact" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="Get In Touch" />
       <div className="grid md:grid-cols-12 gap-12">
@@ -160,6 +163,7 @@ export default function ContactSection() {
             </div>
             <button
               type="submit"
+              data-manageull-preserve-content={formStatus !== 'idle' || undefined}
               disabled={formStatus === 'loading' || formStatus === 'success'}
               className="flex items-center justify-center gap-2 w-full sm:w-auto h-11 px-8 rounded-full technical-border border-accent/50 bg-accent/10 text-accent font-display font-bold text-sm uppercase tracking-wider hover:bg-accent hover:text-ink transition-all disabled:opacity-60 disabled:cursor-not-allowed"
             >

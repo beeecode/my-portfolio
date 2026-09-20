@@ -1,10 +1,13 @@
 'use client';
 
+import { usePublishedTree } from './manageull/PublishedContent';
+
 import { motion } from 'motion/react';
 import { SectionLabel } from './SectionLabel';
 
 export default function AboutSection() {
-  return (
+  const publish = usePublishedTree();
+  return publish(
     <section id="about" className="section-padding max-w-7xl mx-auto">
       <SectionLabel text="About Me" />
 
